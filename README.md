@@ -1,5 +1,7 @@
-Android Docs 
+Android Bootcamp 
 =======
+
+![](/img/title_android_docs.png)
 
 # 本ドキュメントについて
 
