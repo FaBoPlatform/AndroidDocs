@@ -123,7 +123,7 @@ public class MainActivity extends ActionBarActivity {
 }
 ```
 
-MyViewのインスタンスを生成して、Windows.setContentView()でWindowに貼り付る。
+MyViewのインスタンスを生成して、Windows.setContentView()でWindowに貼り付ける。
 
 ```java
         // ① MyViewのインスタンスを生成.
@@ -421,7 +421,7 @@ class MyView extends View {
 ![prelogo](img-chapter05/gclue.png)
 gclue.png
 
-ダウンロードした、gclue_logo.gifを選択し、CTRL + 右クリックで表示されるシュートカットメニューで、gclue_logo.gifのコピーを選ぶ。
+ダウンロードした、gclue_logo.gifを選択し、CTRL + 右クリックで表示されるショートカットメニューで、gclue_logo.gifのコピーを選ぶ。
 
 ![pre0509](img-chapter05/pre0509.png)
 
@@ -429,7 +429,7 @@ Studioのdrawableを選択し、その上でCTRL + 右クリックを押して�
 
 ![pre0510](img-chapter05/pre0510.png)
 
-コピー先フォルサを確認し、[OK]でコピーする。
+コピー先フォルダを確認し、[OK]でコピーする。
 
 ![pre0511](img-chapter05/pre0511.png)
 
