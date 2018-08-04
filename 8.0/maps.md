@@ -146,7 +146,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
     
     /**
-     * Mapの用意ができたらと呼び出される
+     * Mapの用意ができたら呼び出される
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
