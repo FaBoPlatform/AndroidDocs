@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     private SensorManager mSensorManager = null;
 
     /** Log用のTag. */
-    private final static String TAG = "SNESOR";
+    private final static String TAG = "SENSOR";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

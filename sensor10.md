@@ -71,9 +71,28 @@ public class MainActivity extends Activity implements LocationListener {
             startActivity(mIntent);
         }
 
-        // 値が変化した際に呼び出されるリスナーの追加
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 50, this);
+         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        REQUEST_PERMISSION);
 
+            } else {
+                Toast toast = Toast.makeText(this,
+                        "許可されないとアプリが実行できません", Toast.LENGTH_SHORT);
+                toast.show();
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION,},
+                        REQUEST_PERMISSION);
+
+            }
+        } else {
+            // 値が変化した際に呼び出されるリスナーの追加
+            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 50, this);
+        }
+        
         Log.i(TAG,"GPS");
     }
 
@@ -130,6 +149,26 @@ public class MainActivity extends Activity implements LocationListener {
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_PERMISSION) {
+            // 使用が許可された
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 50, this);
+            } else {
+                // それでも拒否された時の対応
+                Toast toast = Toast.makeText(this,
+                        "これ以上なにもできません", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        }
     }
 }
 

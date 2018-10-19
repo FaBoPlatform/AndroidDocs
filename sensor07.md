@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     private SensorManager mSensorManager = null;
 
     /** Log用のTag. */
-    private final static String TAG = "SNESOR";
+    private final static String TAG = "SENSOR";
     Sensor sensor;
 
     @Override
@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // as you specify a parent activity in AndroidManifest.xm:l.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -69,7 +69,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         Log.i(TAG, "SensorChanged():");
 
        if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
-           Log.i(TAG, "Proxomity Level:" + event.values[0]);
+           Log.i(TAG, "Proximity Level" + event.values[0]);
         }
     }
 

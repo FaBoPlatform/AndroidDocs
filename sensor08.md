@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     private SensorManager mSensorManager = null;
 
     /** Log用のTag. */
-    private final static String TAG = "SNESOR";
+    private final static String TAG = "SENSOR";
     Sensor sensor;
 
     @Override
@@ -69,7 +69,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         Log.i(TAG, "SensorChanged():");
 
        if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
-           Log.i(TAG, "Proxomity Level:" + event.values[0]);
+           Log.i(TAG, "Step Count:" + event.values[0]);
         }
     }
 
