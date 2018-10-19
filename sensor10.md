@@ -8,7 +8,7 @@ AndroidManifest.xml
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -55,6 +55,8 @@ public class MainActivity extends Activity implements LocationListener {
 
     /** Tag. */
     private final static String TAG = "GPS";
+
+    private final int REQUEST_PERMISSION = 1024;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
