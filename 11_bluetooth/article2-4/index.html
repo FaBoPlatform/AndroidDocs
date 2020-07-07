@@ -1,0 +1,2734 @@
+
+
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.5">
+    
+    
+      
+        <title>センサーデータをAndroid端末で表示 - FaBo Android Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.df84b5fe.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#android" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="../.." title="FaBo Android Docs" class="md-header-nav__button md-logo" aria-label="FaBo Android Docs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            FaBo Android Docs
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              センサーデータをAndroid端末で表示
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FaBo Android Docs" class="md-nav__button md-logo" aria-label="FaBo Android Docs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    FaBo Android Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="AndroDocs" class="md-nav__link">
+      AndroDocs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../link/" title="Link" class="md-nav__link">
+      Link
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      01 app
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="01 app" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        01 app
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter01/" title="環境設定" class="md-nav__link">
+      環境設定
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter02/" title="Hello World" class="md-nav__link">
+      Hello World
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter03/" title="アプリの種類" class="md-nav__link">
+      アプリの種類
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter04/" title="Activityのライフサイクル" class="md-nav__link">
+      Activityのライフサイクル
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter05/" title="Viewでの描画処理" class="md-nav__link">
+      Viewでの描画処理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter06/" title="タッチイベント" class="md-nav__link">
+      タッチイベント
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter07/" title="音の再生" class="md-nav__link">
+      音の再生
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter08/" title="太鼓アプリの作成" class="md-nav__link">
+      太鼓アプリの作成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter09/" title="ピアノアプリの作成1" class="md-nav__link">
+      ピアノアプリの作成1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter10/" title="ピアノアプリの作成(2)" class="md-nav__link">
+      ピアノアプリの作成(2)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter11/" title="Arduino Bluetooth連携" class="md-nav__link">
+      Arduino Bluetooth連携
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../01_app/chapter12/" title="Arduino USB Host連携" class="md-nav__link">
+      Arduino USB Host連携
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      02 appendix
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="02 appendix" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        02 appendix
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02_appendix/appendix01/" title="Ap1.USBデバックモードを有効にする" class="md-nav__link">
+      Ap1.USBデバックモードを有効にする
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02_appendix/appendix02/" title="Appendix2.Logcatでログを見る" class="md-nav__link">
+      Appendix2.Logcatでログを見る
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02_appendix/appendix03/" title="Appendix3.ショートカットキー" class="md-nav__link">
+      Appendix3.ショートカットキー
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02_appendix/appendix04/" title="Appendix4.Androidの歴史" class="md-nav__link">
+      Appendix4.Androidの歴史
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02_appendix/appendix05/" title="SourceTreeとGithubの連携" class="md-nav__link">
+      SourceTreeとGithubの連携
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02_appendix/appendix06/" title="Appendix6.GithubのPullrequest" class="md-nav__link">
+      Appendix6.GithubのPullrequest
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../02_appendix/appendix07/" title="Appendix7.Githubのコマンドをいじる" class="md-nav__link">
+      Appendix7.Githubのコマンドをいじる
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      03 maps
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="03 maps" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        03 maps
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_maps/maps/" title="Google Maps" class="md-nav__link">
+      Google Maps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_maps/maps00/" title="Google Maps" class="md-nav__link">
+      Google Maps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_maps/maps01/" title="Google Maps用プロジェクトの生成" class="md-nav__link">
+      Google Maps用プロジェクトの生成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_maps/maps02/" title="API Keyの取得" class="md-nav__link">
+      API Keyの取得
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_maps/maps03/" title="Mapsのカスタマイズ" class="md-nav__link">
+      Mapsのカスタマイズ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_maps/maps04/" title="Mapsの装飾" class="md-nav__link">
+      Mapsの装飾
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../03_maps/maps05/" title="Maps関連API" class="md-nav__link">
+      Maps関連API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      04 sensor
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="04 sensor" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        04 sensor
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04_sensor/sensor00/" title="Sensor" class="md-nav__link">
+      Sensor
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04_sensor/sensor01/" title="加速度センサ" class="md-nav__link">
+      加速度センサ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04_sensor/sensor02/" title="Gyroscope" class="md-nav__link">
+      Gyroscope
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04_sensor/sensor03/" title="回転度" class="md-nav__link">
+      回転度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04_sensor/sensor04/" title="温度" class="md-nav__link">
+      温度
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04_sensor/sensor05/" title="照度センサ" class="md-nav__link">
+      照度センサ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04_sensor/sensor06/" title="気圧センサ" class="md-nav__link">
+      気圧センサ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04_sensor/sensor07/" title="近接センサ" class="md-nav__link">
+      近接センサ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04_sensor/sensor08/" title="万歩計" class="md-nav__link">
+      万歩計
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04_sensor/sensor09/" title="磁力計" class="md-nav__link">
+      磁力計
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../04_sensor/sensor10/" title="GPS" class="md-nav__link">
+      GPS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      05 camera
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="05 camera" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        05 camera
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../05_camera/camera01/" title="Camera用の土台の作成" class="md-nav__link">
+      Camera用の土台の作成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../05_camera/camera02/" title="Cameraの組み込み" class="md-nav__link">
+      Cameraの組み込み
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../05_camera/camera03/" title="Cameraへのオーバーレイ" class="md-nav__link">
+      Cameraへのオーバーレイ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../05_camera/camera04/" title="CameraとGPS" class="md-nav__link">
+      CameraとGPS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../05_camera/camera05/" title="端末の方角の計算" class="md-nav__link">
+      端末の方角の計算
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      06 camera2
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="06 camera2" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        06 camera2
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../06_camera2/camera201/" title="TextureViewの作成" class="md-nav__link">
+      TextureViewの作成
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../06_camera2/camera202/" title="CameraManager" class="md-nav__link">
+      CameraManager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../06_camera2/camera203/" title="Cameraをオープン" class="md-nav__link">
+      Cameraをオープン
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      07 intent
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="07 intent" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        07 intent
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../07_intent/intent00/" title="Intent" class="md-nav__link">
+      Intent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../07_intent/intent01/" title="暗示的Intent" class="md-nav__link">
+      暗示的Intent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../07_intent/intent03/" title="Intentでカメラを操作" class="md-nav__link">
+      Intentでカメラを操作
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../07_intent/intent04/" title="Intentでビデオを操作" class="md-nav__link">
+      Intentでビデオを操作
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../07_intent/intent05/" title="Intentを作成する" class="md-nav__link">
+      Intentを作成する
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      08 ui
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="08 ui" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        08 ui
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../08_ui/ui00/" title="UI Layout" class="md-nav__link">
+      UI Layout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../08_ui/ui01/" title="FindViewById" class="md-nav__link">
+      FindViewById
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../08_ui/ui02/" title="XMLでのLayout" class="md-nav__link">
+      XMLでのLayout
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../08_ui/ui03/" title="XMLでのLayout2" class="md-nav__link">
+      XMLでのLayout2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../08_ui/ui04/" title="Button" class="md-nav__link">
+      Button
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../08_ui/ui05/" title="TextView" class="md-nav__link">
+      TextView
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../08_ui/ui06/" title="EditText" class="md-nav__link">
+      EditText
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../08_ui/ui07/" title="電卓の作成" class="md-nav__link">
+      電卓の作成
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      09 webview
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="09 webview" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        09 webview
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../09_webview/webview00/" title="WebView" class="md-nav__link">
+      WebView
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../09_webview/webview01/" title="WebView表示" class="md-nav__link">
+      WebView表示
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      10 wear
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="10 wear" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        10 wear
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../10_wear/wear01/" title="Android Wear" class="md-nav__link">
+      Android Wear
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../10_wear/wear02/" title="Android Wearの環境設定" class="md-nav__link">
+      Android Wearの環境設定
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../10_wear/wear03/" title="Android Wearと実機の接続" class="md-nav__link">
+      Android Wearと実機の接続
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../10_wear/wear04/" title="Android Wearとのデータ連携" class="md-nav__link">
+      Android Wearとのデータ連携
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13" checked>
+    
+    <label class="md-nav__link" for="nav-13">
+      11 bluetooth
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="11 bluetooth" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        11 bluetooth
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../article2-1/" title="事前準備" class="md-nav__link">
+      事前準備
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../article2-2/" title="テキスト送受信" class="md-nav__link">
+      テキスト送受信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../article2-3/" title="AndroidからLED操作" class="md-nav__link">
+      AndroidからLED操作
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        センサーデータをAndroid端末で表示
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="センサーデータをAndroid端末で表示" class="md-nav__link md-nav__link--active">
+      センサーデータをAndroid端末で表示
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arduino" class="md-nav__link">
+    Arduino設定
+  </a>
+  
+    <nav class="md-nav" aria-label="Arduino設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino-uno" class="md-nav__link">
+    Arduino Uno
+  </a>
+  
+    <nav class="md-nav" aria-label="Arduino Uno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino-uno_1" class="md-nav__link">
+    回路 (Arduino Uno)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arduino-uno_2" class="md-nav__link">
+    スケッチ (Arduino Uno)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arduino-mega" class="md-nav__link">
+    Arduino Mega
+  </a>
+  
+    <nav class="md-nav" aria-label="Arduino Mega">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino-mega_1" class="md-nav__link">
+    回路 (Arduino Mega)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#android_1" class="md-nav__link">
+    Android設定
+  </a>
+  
+    <nav class="md-nav" aria-label="Android設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    実行確認
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    センサーデータ対応例
+  </a>
+  
+    <nav class="md-nav" aria-label="センサーデータ対応例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino_1" class="md-nav__link">
+    Arduino
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../article2-5/" title="ロボットカー制御" class="md-nav__link">
+      ロボットカー制御
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      12 Arduino USB HOST
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="12 Arduino USB HOST" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        12 Arduino USB HOST
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../12_Arduino_USB_HOST/article-3-5/" title="Bluetoothでのデバック" class="md-nav__link">
+      Bluetoothでのデバック
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../12_Arduino_USB_HOST/article3-1/" title="事前準備" class="md-nav__link">
+      事前準備
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../12_Arduino_USB_HOST/article3-2/" title="テキスト送信" class="md-nav__link">
+      テキスト送信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../12_Arduino_USB_HOST/article3-3/" title="テキスト受信" class="md-nav__link">
+      テキスト受信
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../12_Arduino_USB_HOST/article3-4/" title="AndroidからLED制御" class="md-nav__link">
+      AndroidからLED制御
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#arduino" class="md-nav__link">
+    Arduino設定
+  </a>
+  
+    <nav class="md-nav" aria-label="Arduino設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino-uno" class="md-nav__link">
+    Arduino Uno
+  </a>
+  
+    <nav class="md-nav" aria-label="Arduino Uno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino-uno_1" class="md-nav__link">
+    回路 (Arduino Uno)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arduino-uno_2" class="md-nav__link">
+    スケッチ (Arduino Uno)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arduino-mega" class="md-nav__link">
+    Arduino Mega
+  </a>
+  
+    <nav class="md-nav" aria-label="Arduino Mega">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino-mega_1" class="md-nav__link">
+    回路 (Arduino Mega)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#android_1" class="md-nav__link">
+    Android設定
+  </a>
+  
+    <nav class="md-nav" aria-label="Android設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    実行確認
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    センサーデータ対応例
+  </a>
+  
+    <nav class="md-nav" aria-label="センサーデータ対応例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino_1" class="md-nav__link">
+    Arduino
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="android">センサーデータをAndroid端末で表示</h1>
+<p>今回は使用するセンサーは距離センサーです。
+<br>
+※FaBo Brickを使用時は他のセンサーをご使用下さい。</p>
+<h2 id="arduino">Arduino設定</h2>
+<h3 id="arduino-uno">Arduino Uno</h3>
+<h4 id="arduino-uno_1">回路 (Arduino Uno)</h4>
+<p><br>
+<img alt="" src="../bt4-01.jpg" /></p>
+<h4 id="arduino-uno_2">スケッチ (Arduino Uno)</h4>
+<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=cp>#include</span> <span class=cpf>&lt;SoftwareSerial.h&gt;</span><span class=cp></span>
+
+<span class=cp>#define led 13      </span><span class=c1>// 13番ピンにてLEDを制御</span>
+<span class=cp>#define sensorPin 0 </span><span class=c1>// センサーを使用するピン</span>
+
+<span class=n>SoftwareSerial</span> <span class=nf>android</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>);</span>
+<span class=c1>//SoftwareSerial android(12,13); // FaBo Brick使用時</span>
+
+<span class=kt>int</span> <span class=n>inByte</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>    <span class=c1>// androidからのテキスト取得用</span>
+<span class=kt>int</span> <span class=n>getSensor</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=c1>// センサーデータ取得用</span>
+
+<span class=kt>void</span> <span class=nf>setup</span><span class=p>(){</span>
+  <span class=c1>// Bluetooth用のシリアルのポートを設定</span>
+  <span class=n>android</span><span class=p>.</span><span class=n>begin</span><span class=p>(</span><span class=mi>115200</span><span class=p>);</span>
+  <span class=c1>// arduinoのシリアルモニタ用</span>
+  <span class=n>Serial</span><span class=p>.</span><span class=n>begin</span><span class=p>(</span><span class=mi>9600</span><span class=p>);</span> 
+  <span class=c1>// LEDピンの出力設定</span>
+  <span class=n>pinMode</span><span class=p>(</span><span class=n>led</span><span class=p>,</span><span class=n>OUTPUT</span><span class=p>);</span>
+  <span class=n>Serial</span><span class=p>.</span><span class=n>write</span><span class=p>(</span><span class=s>&quot;init&quot;</span><span class=p>);</span>
+<span class=p>}</span>
+
+<span class=kt>void</span> <span class=nf>loop</span><span class=p>(){</span>
+
+  <span class=k>if</span><span class=p>(</span><span class=n>android</span><span class=p>.</span><span class=n>available</span><span class=p>()){</span>
+    <span class=n>inByte</span> <span class=o>=</span> <span class=n>android</span><span class=p>.</span><span class=n>read</span><span class=p>();</span>
+    <span class=n>Serial</span><span class=p>.</span><span class=n>println</span><span class=p>(</span><span class=n>inByte</span><span class=p>);</span>
+
+    <span class=c1>// 受信データによりLEDの制御を行う</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>inByte</span> <span class=o>==</span> <span class=mi>49</span><span class=p>){</span>
+      <span class=n>digitalWrite</span><span class=p>(</span><span class=n>led</span><span class=p>,</span><span class=n>HIGH</span><span class=p>);</span>
+    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>inByte</span> <span class=o>==</span> <span class=mi>50</span><span class=p>){</span>
+      <span class=c1>// センサーデータ取得</span>
+      <span class=n>getSensor</span> <span class=o>=</span> <span class=n>analogRead</span><span class=p>(</span><span class=n>sensorPin</span><span class=p>);</span>
+      <span class=n>android</span><span class=p>.</span><span class=n>print</span><span class=p>(</span><span class=n>getSensor</span><span class=p>);</span>
+    <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+      <span class=n>digitalWrite</span><span class=p>(</span><span class=n>led</span><span class=p>,</span><span class=n>LOW</span><span class=p>);</span>
+    <span class=p>}</span>
+
+  <span class=p>}</span> 
+
+  <span class=k>if</span><span class=p>(</span><span class=n>Serial</span><span class=p>.</span><span class=n>available</span><span class=p>()){</span>
+    <span class=n>android</span><span class=p>.</span><span class=n>write</span><span class=p>(</span><span class=n>Serial</span><span class=p>.</span><span class=n>read</span><span class=p>());</span>
+  <span class=p>}</span> 
+
+<span class=p>}</span>
+</code></pre></div></td></tr></table></p>
+<h3 id="arduino-mega">Arduino Mega</h3>
+<h4 id="arduino-mega_1">回路 (Arduino Mega)</h4>
+<p><br>
+<img alt="" src="../bt4-01.jpg" /></p>
+<p>スケッチ (Arduino Mega)</p>
+<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=kt>int</span> <span class=n>led</span> <span class=o>=</span> <span class=mi>13</span><span class=p>;</span>      <span class=c1>// 13番ピンにてLEDを制御</span>
+<span class=kt>int</span> <span class=n>inByte</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>    <span class=c1>// androidからのテキスト取得用</span>
+<span class=kt>int</span> <span class=n>sensorPin</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=c1>// センサーを使用するピン</span>
+<span class=kt>int</span> <span class=n>getSensor</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=c1>// センサーデータ取得用</span>
+
+<span class=kt>void</span> <span class=nf>setup</span><span class=p>(){</span>
+  <span class=c1>// Bluetooth用のシリアルのポートを設定</span>
+  <span class=n>android</span><span class=p>.</span><span class=n>begin</span><span class=p>(</span><span class=mi>115200</span><span class=p>);</span>
+  <span class=c1>// arduinoのシリアルモニタ用</span>
+  <span class=n>Serial</span><span class=p>.</span><span class=n>begin</span><span class=p>(</span><span class=mi>9600</span><span class=p>);</span> 
+  <span class=c1>// LEDピンの出力設定</span>
+  <span class=n>pinMode</span><span class=p>(</span><span class=n>led</span><span class=p>,</span><span class=n>OUTPUT</span><span class=p>);</span>
+  <span class=n>Serial</span><span class=p>.</span><span class=n>write</span><span class=p>(</span><span class=s>&quot;init&quot;</span><span class=p>);</span>
+<span class=p>}</span>
+
+<span class=kt>void</span> <span class=nf>loop</span><span class=p>(){</span>
+
+  <span class=k>if</span><span class=p>(</span><span class=n>android</span><span class=p>.</span><span class=n>available</span><span class=p>()){</span>
+    <span class=n>inByte</span> <span class=o>=</span> <span class=n>android</span><span class=p>.</span><span class=n>read</span><span class=p>();</span>
+    <span class=n>Serial</span><span class=p>.</span><span class=n>println</span><span class=p>(</span><span class=n>inByte</span><span class=p>);</span>
+
+    <span class=c1>// 受信データによりLEDの制御を行う</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>inByte</span> <span class=o>==</span> <span class=mi>49</span><span class=p>){</span>
+      <span class=n>digitalWrite</span><span class=p>(</span><span class=n>led</span><span class=p>,</span><span class=n>HIGH</span><span class=p>);</span>
+    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>inByte</span> <span class=o>==</span> <span class=mi>50</span><span class=p>){</span>
+      <span class=c1>// センサーデータ取得</span>
+      <span class=n>getSensor</span> <span class=o>=</span> <span class=n>analogRead</span><span class=p>(</span><span class=n>sensorPin</span><span class=p>);</span>
+      <span class=n>Serial1</span><span class=p>.</span><span class=n>print</span><span class=p>(</span><span class=n>getSensor</span><span class=p>);</span>
+    <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+      <span class=n>digitalWrite</span><span class=p>(</span><span class=n>led</span><span class=p>,</span><span class=n>LOW</span><span class=p>);</span>
+    <span class=p>}</span>
+
+  <span class=p>}</span> 
+
+  <span class=k>if</span><span class=p>(</span><span class=n>Serial</span><span class=p>.</span><span class=n>available</span><span class=p>()){</span>
+    <span class=n>Serial1</span><span class=p>.</span><span class=n>write</span><span class=p>(</span><span class=n>Serial</span><span class=p>.</span><span class=n>read</span><span class=p>());</span>
+  <span class=p>}</span> 
+
+<span class=p>}</span>
+</code></pre></div></td></tr></table></p>
+<h2 id="android_1">Android設定</h2>
+<p>次にAndroid側のコーディングをします。</p>
+<p>BluetoothServer.java</p>
+<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=kn>package</span> <span class=nn>gclue.com.mybluetooth</span><span class=p>;</span>
+
+<span class=kn>import</span> <span class=nn>android.bluetooth.BluetoothAdapter</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>android.bluetooth.BluetoothDevice</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>android.bluetooth.BluetoothSocket</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>android.os.Bundle</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>android.os.Handler</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>android.os.Message</span><span class=p>;</span>
+<span class=c1>//import android.support.v7.app.ActionBarActivity;</span>
+<span class=kn>import</span> <span class=nn>android.support.v7.app.AppCompatActivity</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>android.util.Log</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>android.view.View</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>android.widget.Button</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>android.widget.TextView</span><span class=p>;</span>
+
+<span class=kn>import</span> <span class=nn>java.io.IOException</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>java.io.InputStream</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>java.io.OutputStream</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>java.util.Set</span><span class=p>;</span>
+<span class=kn>import</span> <span class=nn>java.util.UUID</span><span class=p>;</span>
+
+<span class=c1>//public class MainActivity extends ActionBarActivity implements Runnable, View.OnClickListener {</span>
+<span class=kd>public</span> <span class=kd>class</span> <span class=nc>MainActivity</span> <span class=kd>extends</span> <span class=n>AppCompatActivity</span> <span class=kd>implements</span> <span class=n>Runnable</span><span class=p>,</span> <span class=n>View</span><span class=p>.</span><span class=na>OnClickListener</span> <span class=p>{</span>
+    <span class=cm>/* tag */</span>
+    <span class=kd>private</span> <span class=kd>static</span> <span class=kd>final</span> <span class=n>String</span> <span class=n>TAG</span> <span class=o>=</span> <span class=s>&quot;BluetoothSample&quot;</span><span class=p>;</span>
+
+    <span class=cm>/* Bluetooth Adapter */</span>
+    <span class=kd>private</span> <span class=n>BluetoothAdapter</span> <span class=n>mAdapter</span><span class=p>;</span>
+
+    <span class=cm>/* Bluetoothデバイス */</span>
+    <span class=kd>private</span> <span class=n>BluetoothDevice</span> <span class=n>mDevice</span><span class=p>;</span>
+
+    <span class=cm>/* Bluetooth UUID */</span>
+    <span class=kd>private</span> <span class=kd>final</span> <span class=n>UUID</span> <span class=n>MY_UUID</span> <span class=o>=</span> <span class=n>UUID</span><span class=p>.</span><span class=na>fromString</span><span class=p>(</span><span class=s>&quot;00001101-0000-1000-8000-00805F9B34FB&quot;</span><span class=p>);</span>
+
+    <span class=cm>/* デバイス名 */</span>
+    <span class=kd>private</span> <span class=kd>final</span> <span class=n>String</span> <span class=n>DEVICE_NAME</span> <span class=o>=</span> <span class=s>&quot;RNBT-205F&quot;</span><span class=p>;</span>
+
+    <span class=cm>/* Soket */</span>
+    <span class=kd>private</span> <span class=n>BluetoothSocket</span> <span class=n>mSocket</span><span class=p>;</span>
+
+    <span class=cm>/* Thread */</span>
+    <span class=kd>private</span> <span class=n>Thread</span> <span class=n>mThread</span><span class=p>;</span>
+
+    <span class=cm>/* Threadの状態を表す */</span>
+    <span class=kd>private</span> <span class=kt>boolean</span> <span class=n>isRunning</span><span class=p>;</span>
+
+    <span class=cm>/** 接続ボタン. */</span>
+    <span class=kd>private</span> <span class=n>Button</span> <span class=n>connectButton</span><span class=p>;</span>
+
+    <span class=cm>/** LED ONボタン. */</span>
+    <span class=kd>private</span> <span class=n>Button</span> <span class=n>ledOnButton</span><span class=p>;</span>
+
+    <span class=cm>/** LED OFFボタン. */</span>
+    <span class=kd>private</span> <span class=n>Button</span> <span class=n>ledOffButton</span><span class=p>;</span>
+
+    <span class=cm>/** Sensorボタン. */</span>
+    <span class=kd>private</span> <span class=n>Button</span> <span class=n>sensorButton</span><span class=p>;</span>
+
+    <span class=cm>/** ステータス. */</span>
+    <span class=kd>private</span> <span class=n>TextView</span> <span class=n>mStatusTextView</span><span class=p>;</span>
+
+    <span class=cm>/** Bluetoothから受信した値. */</span>
+    <span class=kd>private</span> <span class=n>TextView</span> <span class=n>mInputTextView</span><span class=p>;</span>
+
+    <span class=cm>/** Action(ステータス表示). */</span>
+    <span class=kd>private</span> <span class=kd>static</span> <span class=kd>final</span> <span class=kt>int</span> <span class=n>VIEW_STATUS</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+
+    <span class=cm>/** Action(取得文字列). */</span>
+    <span class=kd>private</span> <span class=kd>static</span> <span class=kd>final</span> <span class=kt>int</span> <span class=n>VIEW_INPUT</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+
+    <span class=cm>/** BluetoothのOutputStream. */</span>
+    <span class=n>OutputStream</span> <span class=n>mmOutputStream</span> <span class=o>=</span> <span class=kc>null</span><span class=p>;</span>
+
+    <span class=kd>private</span> <span class=kt>boolean</span> <span class=n>connectFlg</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+
+    <span class=nd>@Override</span>
+    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>onCreate</span><span class=p>(</span><span class=n>Bundle</span> <span class=n>savedInstanceState</span><span class=p>){</span>
+        <span class=kd>super</span><span class=p>.</span><span class=na>onCreate</span><span class=p>(</span><span class=n>savedInstanceState</span><span class=p>);</span>
+        <span class=c1>// Layoutにて設定したビューを表示</span>
+        <span class=n>setContentView</span><span class=p>(</span><span class=n>R</span><span class=p>.</span><span class=na>layout</span><span class=p>.</span><span class=na>activity_main</span><span class=p>);</span>
+
+        <span class=c1>// TextViewの設定(Layoutにて設定したものを関連付け)</span>
+        <span class=n>mInputTextView</span> <span class=o>=</span> <span class=p>(</span><span class=n>TextView</span><span class=p>)</span><span class=n>findViewById</span><span class=p>(</span><span class=n>R</span><span class=p>.</span><span class=na>id</span><span class=p>.</span><span class=na>inputValue</span><span class=p>);</span>
+        <span class=n>mStatusTextView</span> <span class=o>=</span> <span class=p>(</span><span class=n>TextView</span><span class=p>)</span><span class=n>findViewById</span><span class=p>(</span><span class=n>R</span><span class=p>.</span><span class=na>id</span><span class=p>.</span><span class=na>statusValue</span><span class=p>);</span>
+
+        <span class=c1>// Buttonの設定(Layoutにて設定したものを関連付け)</span>
+        <span class=n>connectButton</span> <span class=o>=</span> <span class=p>(</span><span class=n>Button</span><span class=p>)</span><span class=n>findViewById</span><span class=p>(</span><span class=n>R</span><span class=p>.</span><span class=na>id</span><span class=p>.</span><span class=na>connectButton</span><span class=p>);</span>
+        <span class=n>ledOnButton</span> <span class=o>=</span> <span class=p>(</span><span class=n>Button</span><span class=p>)</span><span class=n>findViewById</span><span class=p>(</span><span class=n>R</span><span class=p>.</span><span class=na>id</span><span class=p>.</span><span class=na>ledOnButton</span><span class=p>);</span>
+        <span class=n>ledOffButton</span> <span class=o>=</span> <span class=p>(</span><span class=n>Button</span><span class=p>)</span><span class=n>findViewById</span><span class=p>(</span><span class=n>R</span><span class=p>.</span><span class=na>id</span><span class=p>.</span><span class=na>ledOffButton</span><span class=p>);</span>
+        <span class=n>sensorButton</span> <span class=o>=</span> <span class=p>(</span><span class=n>Button</span><span class=p>)</span><span class=n>findViewById</span><span class=p>(</span><span class=n>R</span><span class=p>.</span><span class=na>id</span><span class=p>.</span><span class=na>sensorButton</span><span class=p>);</span>
+
+        <span class=c1>// ボタンのイベント取得設定</span>
+        <span class=n>connectButton</span><span class=p>.</span><span class=na>setOnClickListener</span><span class=p>(</span><span class=k>this</span><span class=p>);</span>
+        <span class=n>ledOnButton</span><span class=p>.</span><span class=na>setOnClickListener</span><span class=p>(</span><span class=k>this</span><span class=p>);</span>
+        <span class=n>ledOffButton</span><span class=p>.</span><span class=na>setOnClickListener</span><span class=p>(</span><span class=k>this</span><span class=p>);</span>
+        <span class=n>sensorButton</span><span class=p>.</span><span class=na>setOnClickListener</span><span class=p>(</span><span class=k>this</span><span class=p>);</span>
+
+        <span class=c1>// Bluetoothのデバイス名を取得</span>
+        <span class=c1>// デバイス名は、RNBT-XXXXになるため、</span>
+        <span class=c1>// DVICE_NAMEでデバイス名を定義</span>
+        <span class=n>mAdapter</span> <span class=o>=</span> <span class=n>BluetoothAdapter</span><span class=p>.</span><span class=na>getDefaultAdapter</span><span class=p>();</span>
+        <span class=n>mStatusTextView</span><span class=p>.</span><span class=na>setText</span><span class=p>(</span><span class=s>&quot;SearchDevice&quot;</span><span class=p>);</span>
+        <span class=n>Set</span><span class=o>&lt;</span> <span class=n>BluetoothDevice</span> <span class=o>&gt;</span> <span class=n>devices</span> <span class=o>=</span> <span class=n>mAdapter</span><span class=p>.</span><span class=na>getBondedDevices</span><span class=p>();</span>
+        <span class=k>for</span> <span class=p>(</span> <span class=n>BluetoothDevice</span> <span class=n>device</span> <span class=p>:</span> <span class=n>devices</span><span class=p>){</span>
+
+            <span class=k>if</span><span class=p>(</span><span class=n>device</span><span class=p>.</span><span class=na>getName</span><span class=p>().</span><span class=na>equals</span><span class=p>(</span><span class=n>DEVICE_NAME</span><span class=p>)){</span>
+                <span class=n>mStatusTextView</span><span class=p>.</span><span class=na>setText</span><span class=p>(</span><span class=s>&quot;find: &quot;</span> <span class=o>+</span> <span class=n>device</span><span class=p>.</span><span class=na>getName</span><span class=p>());</span>
+                <span class=n>mDevice</span> <span class=o>=</span> <span class=n>device</span><span class=p>;</span>
+            <span class=p>}</span>
+        <span class=p>}</span>
+
+    <span class=p>}</span>
+
+    <span class=c1>// 別のアクティビティが起動した場合の処理</span>
+    <span class=nd>@Override</span>
+    <span class=kd>protected</span> <span class=kt>void</span> <span class=nf>onPause</span><span class=p>(){</span>
+        <span class=kd>super</span><span class=p>.</span><span class=na>onPause</span><span class=p>();</span>
+
+        <span class=n>isRunning</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+        <span class=n>connectFlg</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+
+        <span class=k>try</span><span class=p>{</span>
+            <span class=n>mSocket</span><span class=p>.</span><span class=na>close</span><span class=p>();</span>
+        <span class=p>}</span>
+        <span class=k>catch</span><span class=p>(</span><span class=n>Exception</span> <span class=n>e</span><span class=p>){}</span>
+    <span class=p>}</span>
+
+    <span class=c1>// スレッド処理(connectボタン押下後に実行)</span>
+    <span class=nd>@Override</span>
+    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>run</span><span class=p>()</span> <span class=p>{</span>
+        <span class=n>InputStream</span> <span class=n>mmInStream</span> <span class=o>=</span> <span class=kc>null</span><span class=p>;</span>
+
+        <span class=n>Message</span> <span class=n>valueMsg</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Message</span><span class=p>();</span>
+        <span class=n>valueMsg</span><span class=p>.</span><span class=na>what</span> <span class=o>=</span> <span class=n>VIEW_STATUS</span><span class=p>;</span>
+        <span class=n>valueMsg</span><span class=p>.</span><span class=na>obj</span> <span class=o>=</span> <span class=s>&quot;connecting...&quot;</span><span class=p>;</span>
+        <span class=n>mHandler</span><span class=p>.</span><span class=na>sendMessage</span><span class=p>(</span><span class=n>valueMsg</span><span class=p>);</span>
+
+        <span class=k>try</span><span class=p>{</span>
+
+            <span class=c1>// 取得したデバイス名を使ってBluetoothでSocket接続</span>
+            <span class=n>mSocket</span> <span class=o>=</span> <span class=n>mDevice</span><span class=p>.</span><span class=na>createRfcommSocketToServiceRecord</span><span class=p>(</span><span class=n>MY_UUID</span><span class=p>);</span>
+            <span class=n>mSocket</span><span class=p>.</span><span class=na>connect</span><span class=p>();</span>
+            <span class=n>mmInStream</span> <span class=o>=</span> <span class=n>mSocket</span><span class=p>.</span><span class=na>getInputStream</span><span class=p>();</span>
+            <span class=n>mmOutputStream</span> <span class=o>=</span> <span class=n>mSocket</span><span class=p>.</span><span class=na>getOutputStream</span><span class=p>();</span>
+
+            <span class=c1>// InputStreamのバッファを格納</span>
+            <span class=kt>byte</span><span class=o>[]</span> <span class=n>buffer</span> <span class=o>=</span> <span class=k>new</span> <span class=kt>byte</span><span class=o>[</span><span class=mi>1024</span><span class=o>]</span><span class=p>;</span>
+
+            <span class=c1>// 取得したバッファのサイズを格納</span>
+            <span class=kt>int</span> <span class=n>bytes</span><span class=p>;</span>
+            <span class=n>valueMsg</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Message</span><span class=p>();</span>
+            <span class=n>valueMsg</span><span class=p>.</span><span class=na>what</span> <span class=o>=</span> <span class=n>VIEW_STATUS</span><span class=p>;</span>
+            <span class=n>valueMsg</span><span class=p>.</span><span class=na>obj</span> <span class=o>=</span> <span class=s>&quot;connected.&quot;</span><span class=p>;</span>
+            <span class=n>mHandler</span><span class=p>.</span><span class=na>sendMessage</span><span class=p>(</span><span class=n>valueMsg</span><span class=p>);</span>
+
+            <span class=n>connectFlg</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+
+            <span class=k>while</span><span class=p>(</span><span class=n>isRunning</span><span class=p>){</span>
+
+                <span class=c1>// InputStreamの読み込み</span>
+                <span class=n>bytes</span> <span class=o>=</span> <span class=n>mmInStream</span><span class=p>.</span><span class=na>read</span><span class=p>(</span><span class=n>buffer</span><span class=p>);</span>
+                <span class=n>Log</span><span class=p>.</span><span class=na>i</span><span class=p>(</span><span class=n>TAG</span><span class=p>,</span><span class=s>&quot;bytes=&quot;</span><span class=o>+</span><span class=n>bytes</span><span class=p>);</span>
+                <span class=c1>// String型に変換</span>
+                <span class=n>String</span> <span class=n>readMsg</span> <span class=o>=</span> <span class=k>new</span> <span class=n>String</span><span class=p>(</span><span class=n>buffer</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=n>bytes</span><span class=p>);</span>
+
+                <span class=c1>// null以外なら表示</span>
+                <span class=k>if</span><span class=p>(</span><span class=n>readMsg</span><span class=p>.</span><span class=na>trim</span><span class=p>()</span> <span class=o>!=</span> <span class=kc>null</span> <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=n>readMsg</span><span class=p>.</span><span class=na>trim</span><span class=p>().</span><span class=na>equals</span><span class=p>(</span><span class=s>&quot;&quot;</span><span class=p>)){</span>
+                    <span class=n>Log</span><span class=p>.</span><span class=na>i</span><span class=p>(</span><span class=n>TAG</span><span class=p>,</span><span class=s>&quot;value=&quot;</span><span class=o>+</span><span class=n>readMsg</span><span class=p>.</span><span class=na>trim</span><span class=p>());</span>
+
+                    <span class=n>valueMsg</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Message</span><span class=p>();</span>
+                    <span class=n>valueMsg</span><span class=p>.</span><span class=na>what</span> <span class=o>=</span> <span class=n>VIEW_INPUT</span><span class=p>;</span>
+                    <span class=n>valueMsg</span><span class=p>.</span><span class=na>obj</span> <span class=o>=</span> <span class=n>readMsg</span><span class=p>;</span>
+                    <span class=n>mHandler</span><span class=p>.</span><span class=na>sendMessage</span><span class=p>(</span><span class=n>valueMsg</span><span class=p>);</span>
+                <span class=p>}</span>
+            <span class=p>}</span>
+
+        <span class=p>}</span>
+        <span class=c1>// エラー処理</span>
+        <span class=k>catch</span><span class=p>(</span><span class=n>Exception</span> <span class=n>e</span><span class=p>){</span>
+
+            <span class=n>valueMsg</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Message</span><span class=p>();</span>
+            <span class=n>valueMsg</span><span class=p>.</span><span class=na>what</span> <span class=o>=</span> <span class=n>VIEW_STATUS</span><span class=p>;</span>
+            <span class=n>valueMsg</span><span class=p>.</span><span class=na>obj</span> <span class=o>=</span> <span class=s>&quot;Error1:&quot;</span> <span class=o>+</span> <span class=n>e</span><span class=p>;</span>
+            <span class=n>mHandler</span><span class=p>.</span><span class=na>sendMessage</span><span class=p>(</span><span class=n>valueMsg</span><span class=p>);</span>
+
+            <span class=k>try</span><span class=p>{</span>
+                <span class=n>mSocket</span><span class=p>.</span><span class=na>close</span><span class=p>();</span>
+            <span class=p>}</span><span class=k>catch</span><span class=p>(</span><span class=n>Exception</span> <span class=n>ee</span><span class=p>){}</span>
+            <span class=n>isRunning</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+            <span class=n>connectFlg</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+
+    <span class=nd>@Override</span>
+    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>onClick</span><span class=p>(</span><span class=n>View</span> <span class=n>v</span><span class=p>)</span> <span class=p>{</span>
+        <span class=k>if</span><span class=p>(</span><span class=n>v</span><span class=p>.</span><span class=na>equals</span><span class=p>(</span><span class=n>connectButton</span><span class=p>))</span> <span class=p>{</span>
+            <span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=n>connectFlg</span><span class=p>)</span> <span class=p>{</span>
+
+                <span class=n>mStatusTextView</span><span class=p>.</span><span class=na>setText</span><span class=p>(</span><span class=s>&quot;try connect&quot;</span><span class=p>);</span>
+
+                <span class=n>mThread</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Thread</span><span class=p>(</span><span class=k>this</span><span class=p>);</span>
+                <span class=c1>// Threadを起動し、Bluetooth接続</span>
+                <span class=n>isRunning</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+                <span class=n>mThread</span><span class=p>.</span><span class=na>start</span><span class=p>();</span>
+            <span class=p>}</span>
+        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>v</span><span class=p>.</span><span class=na>equals</span><span class=p>(</span><span class=n>ledOnButton</span><span class=p>))</span> <span class=p>{</span>
+            <span class=k>if</span><span class=p>(</span><span class=n>connectFlg</span><span class=p>)</span> <span class=p>{</span>
+                <span class=k>try</span> <span class=p>{</span>
+                    <span class=n>mmOutputStream</span><span class=p>.</span><span class=na>write</span><span class=p>(</span><span class=s>&quot;1&quot;</span><span class=p>.</span><span class=na>getBytes</span><span class=p>());</span>
+                    <span class=n>mStatusTextView</span><span class=p>.</span><span class=na>setText</span><span class=p>(</span><span class=s>&quot;LED ON:&quot;</span><span class=p>);</span>
+                <span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=n>IOException</span> <span class=n>e</span><span class=p>)</span> <span class=p>{</span>
+                    <span class=n>Message</span> <span class=n>valueMsg</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Message</span><span class=p>();</span>
+                    <span class=n>valueMsg</span><span class=p>.</span><span class=na>what</span> <span class=o>=</span> <span class=n>VIEW_STATUS</span><span class=p>;</span>
+                    <span class=n>valueMsg</span><span class=p>.</span><span class=na>obj</span> <span class=o>=</span> <span class=s>&quot;Error3:&quot;</span> <span class=o>+</span> <span class=n>e</span><span class=p>;</span>
+                    <span class=n>mHandler</span><span class=p>.</span><span class=na>sendMessage</span><span class=p>(</span><span class=n>valueMsg</span><span class=p>);</span>
+                <span class=p>}</span>
+            <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+                <span class=n>mStatusTextView</span><span class=p>.</span><span class=na>setText</span><span class=p>(</span><span class=s>&quot;Please push the connect button&quot;</span><span class=p>);</span>
+            <span class=p>}</span>
+        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>v</span><span class=p>.</span><span class=na>equals</span><span class=p>(</span><span class=n>ledOffButton</span><span class=p>))</span> <span class=p>{</span>
+            <span class=k>if</span><span class=p>(</span><span class=n>connectFlg</span><span class=p>)</span> <span class=p>{</span>
+                <span class=k>try</span> <span class=p>{</span>
+                    <span class=n>mmOutputStream</span><span class=p>.</span><span class=na>write</span><span class=p>(</span><span class=s>&quot;0&quot;</span><span class=p>.</span><span class=na>getBytes</span><span class=p>());</span>
+                    <span class=n>mStatusTextView</span><span class=p>.</span><span class=na>setText</span><span class=p>(</span><span class=s>&quot;LED OFF:&quot;</span><span class=p>);</span>
+                <span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=n>IOException</span> <span class=n>e</span><span class=p>)</span> <span class=p>{</span>
+                    <span class=n>Message</span> <span class=n>valueMsg</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Message</span><span class=p>();</span>
+                    <span class=n>valueMsg</span><span class=p>.</span><span class=na>what</span> <span class=o>=</span> <span class=n>VIEW_STATUS</span><span class=p>;</span>
+                    <span class=n>valueMsg</span><span class=p>.</span><span class=na>obj</span> <span class=o>=</span> <span class=s>&quot;Error4:&quot;</span> <span class=o>+</span> <span class=n>e</span><span class=p>;</span>
+                    <span class=n>mHandler</span><span class=p>.</span><span class=na>sendMessage</span><span class=p>(</span><span class=n>valueMsg</span><span class=p>);</span>
+                <span class=p>}</span>
+            <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+                <span class=n>mStatusTextView</span><span class=p>.</span><span class=na>setText</span><span class=p>(</span><span class=s>&quot;Please push the connect button&quot;</span><span class=p>);</span>
+            <span class=p>}</span>
+        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>v</span><span class=p>.</span><span class=na>equals</span><span class=p>(</span><span class=n>sensorButton</span><span class=p>))</span> <span class=p>{</span>
+            <span class=k>if</span><span class=p>(</span><span class=n>connectFlg</span><span class=p>)</span> <span class=p>{</span>
+                <span class=k>try</span> <span class=p>{</span>
+                    <span class=n>mmOutputStream</span><span class=p>.</span><span class=na>write</span><span class=p>(</span><span class=s>&quot;2&quot;</span><span class=p>.</span><span class=na>getBytes</span><span class=p>());</span>
+                    <span class=n>mStatusTextView</span><span class=p>.</span><span class=na>setText</span><span class=p>(</span><span class=s>&quot;Sensor Data:&quot;</span><span class=p>);</span>
+                <span class=p>}</span> <span class=k>catch</span> <span class=p>(</span><span class=n>IOException</span> <span class=n>e</span><span class=p>)</span> <span class=p>{</span>
+                    <span class=n>Message</span> <span class=n>valueMsg</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Message</span><span class=p>();</span>
+                    <span class=n>valueMsg</span><span class=p>.</span><span class=na>what</span> <span class=o>=</span> <span class=n>VIEW_STATUS</span><span class=p>;</span>
+                    <span class=n>valueMsg</span><span class=p>.</span><span class=na>obj</span> <span class=o>=</span> <span class=s>&quot;Error5:&quot;</span> <span class=o>+</span> <span class=n>e</span><span class=p>;</span>
+                    <span class=n>mHandler</span><span class=p>.</span><span class=na>sendMessage</span><span class=p>(</span><span class=n>valueMsg</span><span class=p>);</span>
+                <span class=p>}</span>
+            <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+                <span class=n>mStatusTextView</span><span class=p>.</span><span class=na>setText</span><span class=p>(</span><span class=s>&quot;Please push the connect button&quot;</span><span class=p>);</span>
+            <span class=p>}</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+
+    <span class=cm>/**</span>
+<span class=cm>     * 描画処理はHandlerでおこなう</span>
+<span class=cm>     */</span>
+    <span class=n>Handler</span> <span class=n>mHandler</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Handler</span><span class=p>()</span> <span class=p>{</span>
+        <span class=nd>@Override</span>
+        <span class=kd>public</span> <span class=kt>void</span> <span class=nf>handleMessage</span><span class=p>(</span><span class=n>Message</span> <span class=n>msg</span><span class=p>)</span> <span class=p>{</span>
+            <span class=kt>int</span> <span class=n>action</span> <span class=o>=</span> <span class=n>msg</span><span class=p>.</span><span class=na>what</span><span class=p>;</span>
+            <span class=n>String</span> <span class=n>msgStr</span> <span class=o>=</span> <span class=p>(</span><span class=n>String</span><span class=p>)</span><span class=n>msg</span><span class=p>.</span><span class=na>obj</span><span class=p>;</span>
+            <span class=k>if</span><span class=p>(</span><span class=n>action</span> <span class=o>==</span> <span class=n>VIEW_INPUT</span><span class=p>){</span>
+                <span class=n>mInputTextView</span><span class=p>.</span><span class=na>setText</span><span class=p>(</span><span class=n>msgStr</span><span class=p>);</span>
+            <span class=p>}</span>
+            <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>action</span> <span class=o>==</span> <span class=n>VIEW_STATUS</span><span class=p>){</span>
+                <span class=n>mStatusTextView</span><span class=p>.</span><span class=na>setText</span><span class=p>(</span><span class=n>msgStr</span><span class=p>);</span>
+            <span class=p>}</span>
+        <span class=p>}</span>
+    <span class=p>};</span>
+<span class=p>}</span>
+</code></pre></div></td></tr></table></p>
+<p>activity_main.xml</p>
+<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=cp>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class=nt>&lt;LinearLayout</span> <span class=na>xmlns:android=</span><span class=s>&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class=na>android:layout_width=</span><span class=s>&quot;fill_parent&quot;</span>
+    <span class=na>android:layout_height=</span><span class=s>&quot;fill_parent&quot;</span>
+    <span class=na>android:orientation=</span><span class=s>&quot;vertical&quot;</span> <span class=nt>&gt;</span>
+
+    <span class=nt>&lt;Button</span> <span class=na>android:id=</span><span class=s>&quot;@+id/connectButton&quot;</span>
+        <span class=na>android:layout_width=</span><span class=s>&quot;fill_parent&quot;</span>
+        <span class=na>android:layout_height=</span><span class=s>&quot;wrap_content&quot;</span>
+        <span class=na>android:text=</span><span class=s>&quot;Connect&quot;</span> <span class=nt>/&gt;</span>
+
+    <span class=nt>&lt;TextView</span>
+        <span class=na>android:id=</span><span class=s>&quot;@+id/statusValue&quot;</span>
+        <span class=na>android:layout_width=</span><span class=s>&quot;fill_parent&quot;</span>
+        <span class=na>android:layout_height=</span><span class=s>&quot;wrap_content&quot;</span>
+        <span class=nt>/&gt;</span>
+
+    <span class=nt>&lt;TextView</span>
+        <span class=na>android:id=</span><span class=s>&quot;@+id/inputValue&quot;</span>
+        <span class=na>android:layout_width=</span><span class=s>&quot;fill_parent&quot;</span>
+        <span class=na>android:layout_height=</span><span class=s>&quot;wrap_content&quot;</span>
+        <span class=nt>/&gt;</span>
+
+    <span class=nt>&lt;Button</span> <span class=na>android:id=</span><span class=s>&quot;@+id/ledOnButton&quot;</span>
+        <span class=na>android:layout_width=</span><span class=s>&quot;wrap_content&quot;</span>
+        <span class=na>android:layout_height=</span><span class=s>&quot;wrap_content&quot;</span>
+        <span class=na>android:layout_gravity=</span><span class=s>&quot;center_horizontal&quot;</span>
+        <span class=na>android:text=</span><span class=s>&quot;LED ON&quot;</span> <span class=nt>/&gt;</span>
+
+    <span class=nt>&lt;Button</span> <span class=na>android:id=</span><span class=s>&quot;@+id/ledOffButton&quot;</span>
+        <span class=na>android:layout_width=</span><span class=s>&quot;wrap_content&quot;</span>
+        <span class=na>android:layout_height=</span><span class=s>&quot;wrap_content&quot;</span>
+        <span class=na>android:layout_gravity=</span><span class=s>&quot;center_horizontal&quot;</span>
+        <span class=na>android:text=</span><span class=s>&quot;LED OFF&quot;</span> <span class=nt>/&gt;</span>
+    <span class=nt>&lt;Button</span> <span class=na>android:id=</span><span class=s>&quot;@+id/sensorButton&quot;</span>
+        <span class=na>android:layout_width=</span><span class=s>&quot;wrap_content&quot;</span>
+        <span class=na>android:layout_height=</span><span class=s>&quot;wrap_content&quot;</span>
+        <span class=na>android:layout_gravity=</span><span class=s>&quot;center_horizontal&quot;</span>
+        <span class=na>android:text=</span><span class=s>&quot;SENSOR&quot;</span> <span class=nt>/&gt;</span>
+<span class=nt>&lt;/LinearLayout&gt;</span>
+</code></pre></div></td></tr></table></p>
+<h3 id="_1">実行確認</h3>
+<p>Android端末にボタンが表示されますので、前回と同様「Connect」ボタンを押します。
+<br>
+Sensorボタンを押して値の確認をしてみましょう。</p>
+<p>※ボタンを押すタイミングによっては値の一部のみ表示されてしまいます。
+<br>
+対応するには終了文字をAndroid側で判断し、終了文字がくるまで格納してから出力する必要があります。</p>
+<h2 id="_2">センサーデータ対応例</h2>
+<h3 id="arduino_1">Arduino</h3>
+<p>loopの処理を以下のように変更します。<br>
+変更内容としてはセンサーデータ送信後に'*'の文字を送信しています。</p>
+<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=kt>void</span> <span class=nf>loop</span><span class=p>(){</span>
+
+  <span class=k>if</span><span class=p>(</span><span class=n>android</span><span class=p>.</span><span class=n>available</span><span class=p>()){</span>
+    <span class=n>inByte</span> <span class=o>=</span> <span class=n>android</span><span class=p>.</span><span class=n>read</span><span class=p>();</span>
+    <span class=n>Serial</span><span class=p>.</span><span class=n>println</span><span class=p>(</span><span class=n>inByte</span><span class=p>);</span>
+
+    <span class=c1>// 受信データによりLEDの制御を行う</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>inByte</span> <span class=o>==</span> <span class=mi>49</span><span class=p>){</span>
+      <span class=n>digitalWrite</span><span class=p>(</span><span class=n>led</span><span class=p>,</span><span class=n>HIGH</span><span class=p>);</span>
+    <span class=p>}</span> <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>inByte</span> <span class=o>==</span> <span class=mi>50</span><span class=p>){</span>
+      <span class=c1>// センサーデータ取得</span>
+      <span class=n>getSensor</span> <span class=o>=</span> <span class=n>analogRead</span><span class=p>(</span><span class=n>sensorPin</span><span class=p>);</span>
+      <span class=n>android</span><span class=p>.</span><span class=n>print</span><span class=p>(</span><span class=n>getSensor</span><span class=p>);</span>
+      <span class=n>android</span><span class=p>.</span><span class=n>print</span><span class=p>(</span><span class=sc>&#39;*&#39;</span><span class=p>);</span>
+    <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+      <span class=n>digitalWrite</span><span class=p>(</span><span class=n>led</span><span class=p>,</span><span class=n>LOW</span><span class=p>);</span>
+    <span class=p>}</span>
+
+  <span class=p>}</span> 
+</code></pre></div></td></tr></table></p>
+<p>Android
+<br>
+受け取った文字を格納し、'*'が入った時点で出力を行うように変更します。</p>
+<p>MainActivity.javaのファイルを以下のように変更</p>
+<p>MainActivity内で変数定義の追加</p>
+<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>1
+2
+3
+4</pre></div></td><td class=code><div class=codehilite><pre><span></span><code>    <span class=cm>/** 取得データを格納(文字列) */</span>
+    <span class=kd>private</span> <span class=n>String</span> <span class=n>out_Text</span> <span class=o>=</span><span class=s>&quot;&quot;</span><span class=p>;</span>
+    <span class=cm>/** 取得データの終了文字以降(2文字目以降)を格納(文字列) */</span>
+    <span class=kd>private</span> <span class=n>String</span> <span class=n>out_Text_bk</span> <span class=o>=</span><span class=s>&quot;&quot;</span><span class=p>;</span>
+</code></pre></div></td></tr></table></p>
+<p>スレッド処理(run)内のループ処理を変更</p>
+<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre></div></td><td class=code><div class=codehilite><pre><span></span><code>            <span class=k>while</span><span class=p>(</span><span class=n>isRunning</span><span class=p>){</span>
+
+                <span class=c1>// InputStreamの読み込み</span>
+                <span class=n>bytes</span> <span class=o>=</span> <span class=n>mmInStream</span><span class=p>.</span><span class=na>read</span><span class=p>(</span><span class=n>buffer</span><span class=p>);</span>
+                <span class=n>Log</span><span class=p>.</span><span class=na>i</span><span class=p>(</span><span class=n>TAG</span><span class=p>,</span><span class=s>&quot;bytes=&quot;</span><span class=o>+</span><span class=n>bytes</span><span class=p>);</span>
+                <span class=c1>// String型に変換(退避用に文字が存在する場合はそれも含めて設定)</span>
+                <span class=n>String</span> <span class=n>readMsg</span> <span class=o>=</span> <span class=n>out_Text_bk</span> <span class=o>+</span> <span class=k>new</span> <span class=n>String</span><span class=p>(</span><span class=n>buffer</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=n>bytes</span><span class=p>);</span>
+                <span class=c1>// 退避用変数の初期化</span>
+                <span class=n>out_Text_bk</span> <span class=o>=</span> <span class=s>&quot;&quot;</span><span class=p>;</span>
+                <span class=c1>// 出力フラグの初期化</span>
+                <span class=n>Boolean</span> <span class=n>dataEndFlg</span> <span class=o>=</span> <span class=kc>false</span><span class=p>;</span>
+
+                <span class=c1>// 読み込んだ文字列を1文字ずつ取得</span>
+                <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span><span class=o>=</span><span class=mi>0</span> <span class=p>;</span> <span class=n>readMsg</span><span class=p>.</span><span class=na>length</span><span class=p>()</span> <span class=o>&gt;</span> <span class=n>i</span> <span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
+                    <span class=kt>char</span> <span class=n>readChar</span> <span class=o>=</span> <span class=n>readMsg</span><span class=p>.</span><span class=na>charAt</span><span class=p>(</span><span class=n>i</span><span class=p>);</span>
+                    <span class=c1>// 文字判定</span>
+                    <span class=k>if</span> <span class=p>(</span><span class=n>readChar</span> <span class=o>==</span> <span class=sc>&#39;*&#39;</span><span class=p>)</span>  <span class=p>{</span>
+                        <span class=c1>// 終了文字を確認した時点で出力フラグを立てる</span>
+                        <span class=n>dataEndFlg</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+                    <span class=c1>// 終了文字以降</span>
+                    <span class=p>}</span><span class=k>else</span> <span class=k>if</span> <span class=p>(</span><span class=n>dataEndFlg</span><span class=p>)</span> <span class=p>{</span>
+                        <span class=c1>// 文字を退避</span>
+                        <span class=n>out_Text_bk</span> <span class=o>=</span> <span class=n>out_Text_bk</span> <span class=o>+</span> <span class=n>readChar</span><span class=p>;</span>
+                    <span class=c1>// 終了文字以前</span>
+                    <span class=p>}</span><span class=k>else</span><span class=p>{</span>
+                        <span class=c1>// 出力用に設定</span>
+                        <span class=n>out_Text</span> <span class=o>=</span> <span class=n>out_Text</span> <span class=o>+</span> <span class=n>readChar</span><span class=p>;</span>
+                    <span class=p>}</span>
+                <span class=p>}</span>
+
+                <span class=c1>// 出力フラグがtrueかつnull(空文字含む)以外なら表示</span>
+                <span class=k>if</span><span class=p>(</span> <span class=n>dataEndFlg</span> <span class=o>&amp;&amp;</span> <span class=n>out_Text</span><span class=p>.</span><span class=na>trim</span><span class=p>()</span> <span class=o>!=</span> <span class=kc>null</span> <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=n>out_Text</span><span class=p>.</span><span class=na>trim</span><span class=p>().</span><span class=na>equals</span><span class=p>(</span><span class=s>&quot;&quot;</span><span class=p>)){</span>
+                    <span class=n>Log</span><span class=p>.</span><span class=na>i</span><span class=p>(</span><span class=n>TAG</span><span class=p>,</span><span class=s>&quot;value=&quot;</span><span class=o>+</span><span class=n>out_Text</span><span class=p>.</span><span class=na>trim</span><span class=p>());</span>
+
+                    <span class=n>valueMsg</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Message</span><span class=p>();</span>
+                    <span class=n>valueMsg</span><span class=p>.</span><span class=na>what</span> <span class=o>=</span> <span class=n>VIEW_INPUT</span><span class=p>;</span>
+                    <span class=n>valueMsg</span><span class=p>.</span><span class=na>obj</span> <span class=o>=</span> <span class=n>out_Text</span><span class=p>.</span><span class=na>trim</span><span class=p>();</span>
+                    <span class=n>mHandler</span><span class=p>.</span><span class=na>sendMessage</span><span class=p>(</span><span class=n>valueMsg</span><span class=p>);</span>
+                    <span class=c1>// 出力用変数の初期化</span>
+                    <span class=n>out_Text</span> <span class=o>=</span> <span class=s>&quot;&quot;</span><span class=p>;</span>
+                <span class=p>}</span>
+            <span class=p>}</span>
+</code></pre></div></td></tr></table></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
+        
+          <a href="../article2-3/" title="AndroidからLED操作" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  前
+                </span>
+                AndroidからLED操作
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../article2-5/" title="ロボットカー制御" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  次
+                </span>
+                ロボットカー制御
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
